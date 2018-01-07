@@ -1,3 +1,5 @@
+use std::fmt;
+
 #[derive(Debug)]
 pub enum Color {
     Red,
@@ -71,6 +73,22 @@ impl Card {
             card_type,
             visibility,
             value
+        }
+    }
+
+    pub fn reveal(&mut self) {
+      match self.visibility {
+          Visibility::Hidden => self.visibility = Visibility::Exposed,
+          Visibility::Exposed => println!("card {} is already exposed", self.to_string())
+      }
+    }
+}
+
+impl fmt::Display for Card {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self.visibility {
+            Visibility::Hidden => write!(f, "Hidden Card"),
+            Visibility::Exposed => write!(f, "{:?}", self.card_type),
         }
     }
 }

@@ -5,7 +5,7 @@ use self::rand::{thread_rng, Rng};
 
 #[derive(Debug)]
 pub struct Deck {
-    cards: Vec<Card>,
+    pub cards: Vec<Card>,
 }
 
 impl Deck {

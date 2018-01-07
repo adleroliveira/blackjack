@@ -4,16 +4,20 @@ use table::Table;
 #[derive(Debug)]
 pub struct Player {
   cards: Vec<Card>,
-  name: &'static str
+  pub name: String
 }
 
 impl Player {
-  pub fn new(name: &'static str) -> Player {
+  pub fn new(name: String) -> Player {
     let cards: Vec<Card> = Vec::new();
     Player{ cards, name }
   }
 
-  pub fn seat(self, table: &mut Table) {
-    table.seat(self);
+  pub fn seat_at(self, table: &mut Table) {
+    table.add_player(self);
+  }
+
+  pub fn take_card(&mut self, card: Card) {
+    self.cards.push(card);
   }
 }
