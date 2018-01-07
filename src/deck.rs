@@ -12,19 +12,20 @@ impl Deck {
     pub fn new() -> Deck {
         let mut cards = Vec::new();
         for i in 0..4 {
-            cards.push(Card::new(CardType::Ace(Suit::from_number(i)), 1));
-            cards.push(Card::new(CardType::Two(Suit::from_number(i)), 2));
-            cards.push(Card::new(CardType::Three(Suit::from_number(i)), 3));
-            cards.push(Card::new(CardType::Four(Suit::from_number(i)), 4));
-            cards.push(Card::new(CardType::Five(Suit::from_number(i)), 5));
-            cards.push(Card::new(CardType::Six(Suit::from_number(i)), 6));
-            cards.push(Card::new(CardType::Seven(Suit::from_number(i)), 7));
-            cards.push(Card::new(CardType::Eight(Suit::from_number(i)), 8));
-            cards.push(Card::new(CardType::Nine(Suit::from_number(i)), 9));
-            cards.push(Card::new(CardType::Ten(Suit::from_number(i)), 10));
-            cards.push(Card::new(CardType::Jack(Suit::from_number(i)), 10));
-            cards.push(Card::new(CardType::Queen(Suit::from_number(i)), 10));
-            cards.push(Card::new(CardType::King(Suit::from_number(i)), 10));
+            let suit = Suit::from_number(i).expect("Invalid suit number");
+            cards.push(Card::new(CardType::Ace(suit.clone()), 1));
+            cards.push(Card::new(CardType::Two(suit.clone()), 2));
+            cards.push(Card::new(CardType::Three(suit.clone()), 3));
+            cards.push(Card::new(CardType::Four(suit.clone()), 4));
+            cards.push(Card::new(CardType::Five(suit.clone()), 5));
+            cards.push(Card::new(CardType::Six(suit.clone()), 6));
+            cards.push(Card::new(CardType::Seven(suit.clone()), 7));
+            cards.push(Card::new(CardType::Eight(suit.clone()), 8));
+            cards.push(Card::new(CardType::Nine(suit.clone()), 9));
+            cards.push(Card::new(CardType::Ten(suit.clone()), 10));
+            cards.push(Card::new(CardType::Jack(suit.clone()), 10));
+            cards.push(Card::new(CardType::Queen(suit.clone()), 10));
+            cards.push(Card::new(CardType::King(suit.clone()), 10));
         }
         Deck { cards }
     }

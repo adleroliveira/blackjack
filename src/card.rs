@@ -6,7 +6,7 @@ pub enum Color {
     Black
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Suit {
     Diamonds,
     Clubs,
@@ -24,13 +24,13 @@ impl Suit {
         }
     }
 
-    pub fn from_number(n: u32) -> Suit {
+    pub fn from_number(n: u32) -> Option<Suit> {
         match n {
-            0 => Suit::Diamonds,
-            1 => Suit::Clubs,
-            2 => Suit::Hearts,
-            3 => Suit::Spades,
-            _ => panic!("Whaaat?")
+            0 => Some(Suit::Diamonds),
+            1 => Some(Suit::Clubs),
+            2 => Some(Suit::Hearts),
+            3 => Some(Suit::Spades),
+            _ => None
         }
     }
 }
