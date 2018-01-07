@@ -53,7 +53,7 @@ pub enum CardType {
     Joker(Color)
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Visibility {
   Hidden,
   Exposed

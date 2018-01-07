@@ -17,7 +17,7 @@ impl Player {
     table.add_player(self);
   }
 
-  pub fn take_card(&mut self, card: Card) {
+  pub fn receive(&mut self, card: Card) {
     self.cards.push(card);
   }
 }
