@@ -1,19 +1,32 @@
 extern crate blackjack;
-use blackjack::table::Table;
-use blackjack::player::Player;
+use blackjack::table::{Table, TableOption};
+use std::io;
 
 fn main() {
-    let table_name = String::from("table1");
-    let player1_name = String::from("p1");
-    let player2_name = String::from("p2");
+    println!("Welcome to Toy Blackjack");
+    let table = Table::open();
 
-    let mut table = Table::open(table_name);
-    let p1 = Player::new(player1_name);
-    let p2 = Player::new(player2_name);
+    loop {
+        println!("\n\nChoose an option:");
 
-    p1.seat_at(&mut table);
-    p2.seat_at(&mut table);
+        let options = table.options();
+        for option in options.iter() {
+            println!("{}", option.to_string())
+        }
 
-    table.start_round().unwrap();
-    // println!("{:#?}", table);
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        input.pop();
+
+        let action: TableOption = match TableOption::from_string(input.as_str()) {
+            Some(option) => {
+                println!("Nice: {}", option);
+                option
+            }
+            None  => {
+                println!("Invalid Option");
+                continue;
+            }
+        };
+    }
 }

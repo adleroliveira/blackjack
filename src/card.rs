@@ -1,12 +1,12 @@
 use std::fmt;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Color {
     Red,
     Black
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Suit {
     Diamonds,
     Clubs,
@@ -35,7 +35,7 @@ impl Suit {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum CardType {
     Ace(Suit),
     Two(Suit),
@@ -59,7 +59,7 @@ pub enum Visibility {
   Exposed
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Card {
     card_type: CardType,
     visibility: Visibility,

@@ -1,7 +1,7 @@
 use card::Card;
 use table::Table;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Player {
   cards: Vec<Card>,
   pub name: String
